@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +9,32 @@ import { QuoteService } from './quote.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  quote: string | undefined;
+  // quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService) {}
+  meme: any;
+
+  constructor(private http: HttpClient) {}
+
+  getMeme(): Observable<any> {
+    return this.http.get(`http://localhost:3000/memes`);
+  }
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+
+    this.getMeme().subscribe(data => {
+      this.meme = data
+    });
+    // this.quoteService
+    //   .getRandomQuote({ category: 'dev' })
+    //   .pipe(
+    //     finalize(() => {
+    //       this.isLoading = false;
+    //     })
+    //   )
+    //   .subscribe((quote: string) => {
+    //     this.quote = quote;
+    //   });
   }
 }

@@ -9,9 +9,18 @@ import { MaterialModule } from '@app/material.module';
 import { AuthModule } from '@app/auth';
 import { ShellComponent } from './shell.component';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, AuthModule, I18nModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    FlexLayoutModule,
+    MaterialModule,
+    AuthModule,
+    I18nModule,
+    RouterModule],
   declarations: [HeaderComponent, ShellComponent],
 })
 export class ShellModule {}

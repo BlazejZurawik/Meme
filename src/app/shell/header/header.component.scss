@@ -5,15 +5,46 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
+}
+
+.navbar__content {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 64px;
+  transition: 0.2s;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.search-form-field {
+  font-size: 14px;
 }
 
 .brand {
   color: mat-color($app-primary, "default-contrast");
   text-decoration: none;
   padding-right: 1rem;
+  // padding-left: 10rem;
+  font-size: larger;
 }
 
 .menu-button {
   margin-right: 1rem;
+}
+
+.font {
+  font-family: 'Comic Neue', cursive;
+}
+
+@media only screen and (max-width: 960px) {
+  .navbar__content {
+    width: 100%;
+  }
 }

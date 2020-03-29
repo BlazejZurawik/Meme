@@ -1,6 +1,16 @@
 <div class="container">
-  <mat-card>
-    <p>
+  <mat-card class="container__child" *ngFor="let item of meme" >
+    <mat-card-title style="text-align: start;">
+      {{item.title}}
+    </mat-card-title>
+    <img mat-card-image src={{item.url}} alt="">
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- buttons -->
+    </mat-card-actions>
+    <!-- <p>
       <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
     </p>
     <mat-card-content>
@@ -9,6 +19,7 @@
         <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
         <q [hidden]="isLoading">{{ quote }}</q>
       </mat-card-subtitle>
-    </mat-card-content>
+      <button mat-raised-button color="accent">Accent</button>
+    </mat-card-content> -->
   </mat-card>
 </div>

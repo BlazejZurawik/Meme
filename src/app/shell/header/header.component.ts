@@ -13,6 +13,8 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 export class HeaderComponent implements OnInit {
   @Input() sidenav!: MatSidenav;
 
+  value: string;
+
   constructor(
     private router: Router,
     private titleService: Title,
