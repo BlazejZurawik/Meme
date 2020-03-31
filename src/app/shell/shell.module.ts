@@ -10,6 +10,8 @@ import { AuthModule } from '@app/auth';
 import { ShellComponent } from './shell.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     AuthModule,
     I18nModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
     RouterModule],
   declarations: [HeaderComponent, ShellComponent],
 })

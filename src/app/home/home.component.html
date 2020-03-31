@@ -1,4 +1,10 @@
-<div class="container">
+<div class="container"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="150"
+(scrolled)="onScroll()"
+[scrollWindow]="false">
+
   <mat-card class="container__child" *ngFor="let item of meme" >
     <mat-card-title style="text-align: start;">
       {{item.title}}
@@ -10,16 +16,27 @@
     <mat-card-actions>
       <!-- buttons -->
     </mat-card-actions>
-    <!-- <p>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-    </p>
-    <mat-card-content>
-      <mat-card-title translate>Hello world !</mat-card-title>
-      <mat-card-subtitle>
-        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
-        <q [hidden]="isLoading">{{ quote }}</q>
-      </mat-card-subtitle>
-      <button mat-raised-button color="accent">Accent</button>
-    </mat-card-content> -->
+    <mat-card-footer>Dodano:</mat-card-footer>
   </mat-card>
+
+  <div class="spinner" *ngIf="notEmptyPost"  >
+      <ngx-spinner
+      bdOpacity = 0.9
+      bdColor = ""
+      size = "default"
+      color = "#ff8f00"
+      type = "ball-pulse-sync"
+      [fullScreen]= "false"
+      >
+      </ngx-spinner>
+  </div>
+
+  <div class="endOfPage" *ngIf="!notEmptyPost" >
+    <h2>Moderator się obija :/ koniec memów</h2>
+  </div>
 </div>
+
+
+
+
+

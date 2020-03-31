@@ -15,6 +15,11 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   constructor(private media: MediaObserver) {}
 
+  onScroll() {
+    console.log('dziala');
+
+  }
+
   ngOnInit() {
     // Automatically close side menu on screens > sm breakpoint
     this.media
