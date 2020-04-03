@@ -11,12 +11,14 @@ infiniteScroll
     </mat-card-title>
     <img mat-card-image src={{item.url}} alt="">
     <mat-card-content>
-
+      <p>tutaj znajduje sie opis MEME</p>
     </mat-card-content>
     <mat-card-actions>
       <!-- buttons -->
     </mat-card-actions>
-    <mat-card-footer>Dodano:</mat-card-footer>
+    <mat-card-footer class="dateOfMeme">
+      <i>Dodano: {{myDate | date}}</i>
+    </mat-card-footer>
   </mat-card>
 
   <div class="spinner" *ngIf="notEmptyPost"  >
@@ -32,7 +34,7 @@ infiniteScroll
   </div>
 
   <div class="endOfPage" *ngIf="!notEmptyPost" >
-    <h2>Moderator się obija :/ koniec memów</h2>
+    <h2>Moderator się obija :/ koniec meme</h2>
   </div>
 </div>
 

@@ -2,7 +2,7 @@
   text-align: center;
   padding: 0 1em 1em 1em;
   width: 100%;
-  min-width: 560px;
+  // min-width: 560px;
   transition: 0.2s;
   height: 100%;
   overflow: scroll;
@@ -17,21 +17,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: 0.2s;
 }
 
 .container__child > img {
   padding: 10px;
 }
 
-.logo {
-  width: 150px;
-  margin: 0 auto;
-}
 
-q {
-  font-style: italic;
-  quotes: "« " " »";
-}
+// q {
+//   font-style: italic;
+//   quotes: "« " " »";
+// }
 
 .spinner {
   position: relative;
@@ -41,8 +38,24 @@ q {
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
+  .container__child {
     min-width: 100%;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE and Edge */
+  .container {
+    -ms-overflow-style: none;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .container__child {
+    width: 90%;
   }
 }
 
@@ -58,4 +71,11 @@ q {
 
 .endOfPage {
   font-family: 'Comic Neue', cursive;
+}
+
+.dateOfMeme {
+  text-align: end;
+  padding: 0 16px 5px 0;
+  opacity: 0.5;
+  font-size: smaller;
 }

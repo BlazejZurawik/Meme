@@ -9,9 +9,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  // quote: string | undefined;
-  isLoading = false;
 
+  myDate = new Date();
   meme: any;
   notScrolly = true;
   notEmptyPost = true;
@@ -56,7 +55,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoading = true;
     this.getMeme().subscribe(data => {
       this.meme = data
       console.log(this.meme);
