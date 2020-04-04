@@ -13,10 +13,13 @@ infiniteScroll
     <mat-card-content>
       <p>tutaj znajduje sie opis MEME</p>
     </mat-card-content>
-    <mat-card-actions>
-      <!-- buttons -->
-    </mat-card-actions>
+    <!-- <mat-card-actions>
+    </mat-card-actions> -->
     <mat-card-footer class="dateOfMeme">
+      <button mat-button color="accent" title="Copy link to share" (click)="coppyLink(this.item.id)">
+        <span class="material-icons">
+        share
+        </span></button>
       <i>Dodano: {{myDate | date}}</i>
     </mat-card-footer>
   </mat-card>

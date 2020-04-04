@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +17,16 @@ export class HomeComponent implements OnInit {
   notEmptyPost = true;
   page = 1;
 
-  constructor(private http: HttpClient, public spinner: NgxSpinnerService) {}
+  constructor(
+    private http: HttpClient,
+    public spinner: NgxSpinnerService,
+    private clipboard: Clipboard) {}
+
+  coppyLink(id: number) {
+    this.clipboard.copy(`localhost:4200/home/${id}`)
+  }
 
   getMeme(): Observable<any> {
-    // return this.http.get(`http://localhost:3000/memes`);
     return this.http.get(`http://localhost:3000/memes?_page=1&_sort=id&_order=desc`);
   }
 

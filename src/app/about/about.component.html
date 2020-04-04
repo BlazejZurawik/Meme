@@ -1,11 +1,24 @@
 <div class="container">
-  <mat-card>
+  <mat-card class="container__child" color="primary">
     <h1>
-      <mat-card-title translate>APP_NAME</mat-card-title>
+      <mat-card-title translate>Wyślij Meme</mat-card-title>
     </h1>
-    <mat-card-content>
-      <mat-icon>code</mat-icon>
-      <span translate>Version</span> {{ version }}
-    </mat-card-content>
+    <form>
+      <mat-form-field color="accent" class="input">
+        <mat-label>Tytuł</mat-label>
+        <input  matInput>
+      </mat-form-field>
+      <mat-form-field color="accent" class="input">
+        <mat-label>Url</mat-label>
+        <input  matInput>
+      </mat-form-field>
+      <mat-form-field color="accent" class="input">
+        <mat-label>Komentarz</mat-label>
+        <input  matInput>
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <button mat-raised-button color="accent">Wyślij</button>
+    </mat-card-actions>
   </mat-card>
 </div>

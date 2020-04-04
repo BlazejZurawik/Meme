@@ -1,3 +1,4 @@
+import { SingleMemeComponent } from './single-meme/single-meme.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, data: { title: extract('Home') } },
+    { path: 'home/:id', component: SingleMemeComponent, data: { title: extract('SingleMeme') } },
   ]),
 ];
 

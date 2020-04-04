@@ -10,6 +10,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SingleMemeComponent } from './single-meme/single-meme.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule,
     HomeRoutingModule,
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, SingleMemeComponent],
 })
 export class HomeModule {}
