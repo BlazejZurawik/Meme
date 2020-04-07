@@ -1,3 +1,4 @@
+import { SearchServiceService } from './../../search-service.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,10 +20,18 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private authenticationService: AuthenticationService,
-    private credentialsService: CredentialsService
+    private credentialsService: CredentialsService,
+    private searchService: SearchServiceService
   ) {}
 
-  ngOnInit() {}
+  searchMeme() {
+
+    this.searchService.value = this.value
+    this.searchService.callComponentMethod();
+  }
+
+  ngOnInit() {
+  }
 
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
