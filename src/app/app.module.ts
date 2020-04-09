@@ -1,3 +1,5 @@
+import { ShellAdminModule } from './shell-admin/shell-admin.module';
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     SharedModule,
     ShellModule,
+    ShellAdminModule,
+    AdminPanelModule,
     HomeModule,
     AboutModule,
     AuthModule,

@@ -3,7 +3,9 @@
 :host {
   display: flex;
   flex: 1;
-  background-color: #f5f5f5;
+  background-color: #303030;
+  color: white;
+  // font-family: 'Comic Neue', cursive;
 }
 
 .inline-loader {
@@ -25,4 +27,8 @@
 
 .login-error {
   color: mat-color($app-warn);
+}
+
+.font {
+  font-family: 'Comic Neue', cursive;
 }

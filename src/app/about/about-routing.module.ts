@@ -1,12 +1,12 @@
+import { ShellAdminService } from './../shell-admin/shell-admin.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/i18n';
-import { Shell } from '@app/shell/shell.service';
 import { AboutComponent } from './about.component';
 
 const routes: Routes = [
-  Shell.childRoutes([{ path: 'about', component: AboutComponent, data: { title: extract('About') } }]),
+  ShellAdminService.childRoutes([{ path: 'about', component: AboutComponent, data: { title: extract('About') } }]),
 ];
 
 @NgModule({

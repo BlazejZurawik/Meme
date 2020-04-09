@@ -8,25 +8,27 @@
       <span class="title font">WONZIOWE MEMY</span>
     </div>
     <div fxHide.lt-md class="navbar__brand">
-      <a class="brand font" routerLink='/home' translate>WONZIOWE MEMY</a>
+      <a class="brand font" routerLink='/admin-panel' translate>WONZIOWE MEMY</a>
       <!-- <button mat-button routerLink="/home" routerLinkActive="active">
         <mat-icon color="accent">home</mat-icon>
         <span class="font">Start</span>
       </button> -->
-      <!-- <button  class="buttonAdd" mat-button routerLink="/about" routerLinkActive="active">
+      <button  class="buttonAdd" mat-button routerLink="/about" routerLinkActive="active">
         <mat-icon color="accent">add</mat-icon>
         <span class="font">Dodaj</span>
-      </button> -->
+      </button>
 
     </div>
     <!-- <span fxFlex></span>   -->
-    <mat-form-field class="search-form-field font">
+    <div>Admin</div>
+
+    <!-- <mat-form-field class="search-form-field font">
       <mat-label>Szukaj</mat-label>
       <input class="search-form-field__input" matInput type="text" [(ngModel)]="value" (keyup.enter)="searchMeme()">
       <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
         <mat-icon>close</mat-icon>
       </button>
-    </mat-form-field>
+    </mat-form-field> -->
   </div>
   <!-- <app-language-selector icon="true"></app-language-selector> -->
   <!-- <button mat-icon-button [matMenuTriggerFor]="userMenu">

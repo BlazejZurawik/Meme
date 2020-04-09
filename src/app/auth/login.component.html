@@ -1,9 +1,9 @@
-<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography">
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography" class="font">
   <div>
     <h1 fxLayoutAlign="center" translate>APP_NAME</h1>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
       <h4 class="version">v{{ version }}</h4>
-      <app-language-selector></app-language-selector>
+      <!-- <app-language-selector></app-language-selector> -->
     </div>
   </div>
   <div class="login-container" fxLayout="row" fxLayoutAlign="center">
@@ -14,7 +14,7 @@
         </div>
         <br />
         <div class="login-fields" fxLayout="column">
-          <mat-form-field [hideRequiredMarker]="true">
+          <mat-form-field [hideRequiredMarker]="true" color="accent" class="font">
             <input
               type="text"
               matInput
@@ -27,7 +27,7 @@
               <span translate>Username is required</span>
             </mat-error>
           </mat-form-field>
-          <mat-form-field [hideRequiredMarker]="true">
+          <mat-form-field [hideRequiredMarker]="true" color="accent" class="font">
             <input
               type="password"
               matInput
@@ -40,9 +40,9 @@
               <span translate>Password is required</span>
             </mat-error>
           </mat-form-field>
-          <mat-slide-toggle color="primary" formControlName="remember" translate>Remember me</mat-slide-toggle>
+          <!-- <mat-slide-toggle color="primary" formControlName="remember" translate>Remember me</mat-slide-toggle> -->
           <br />
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading">
+          <button class="font" mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid || isLoading">
             <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
             <span translate>Login</span>
           </button>
