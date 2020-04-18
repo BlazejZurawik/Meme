@@ -8,6 +8,10 @@
   z-index: 2;
 }
 
+.brand {
+  cursor: pointer;
+}
+
 .navbar__content {
   width: 60%;
   margin: auto;
@@ -43,7 +47,7 @@
   font-family: 'Comic Neue', cursive;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1080px) {
   .navbar__content {
     width: 100%;
   }

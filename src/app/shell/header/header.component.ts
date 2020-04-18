@@ -30,6 +30,10 @@ export class HeaderComponent implements OnInit {
     this.searchService.callComponentMethod();
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
   ngOnInit() {
   }
 

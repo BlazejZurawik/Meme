@@ -53,7 +53,7 @@
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1080px) {
   .container__child {
     width: 90%;
   }
@@ -69,13 +69,35 @@
   background-color: #424242;
 }
 
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title__tags {
+  font-size: small;
+  display: flex;
+}
+.title__tags--el {
+  margin-left: 5px;
+}
+
 .endOfPage {
   font-family: 'Comic Neue', cursive;
 }
 
 .dateOfMeme {
-  text-align: end;
-  padding: 0 16px 5px 0;
+  // text-align: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 5px 16px;
   opacity: 0.5;
   font-size: smaller;
 }
+
+::ng-deep .mat-snack-bar-container {
+  background-color: #ff9100d7;
+}
+
+::ng-deep .custom-class .mat-simple-snackbar-action { color: green; }

@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { SearchServiceService } from '@app/search-service.service';
+import { MatSnackBar, MatSnackBarConfig  } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   myDate = new Date();
   meme: any;
+  tags: any;
   notScrolly = true;
   notEmptyPost = true;
   page = 1;
@@ -22,19 +24,34 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     public spinner: NgxSpinnerService,
     private clipboard: Clipboard,
-    private searchService: SearchServiceService) {
+    private searchService: SearchServiceService,
+    private _snackBar: MatSnackBar) {
 
       this.searchService.componentMethodCalled$.subscribe( () => {
         this.searchMemeTrigger();
       })
     }
 
-  coppyLink(id: number) {
-    this.clipboard.copy(`localhost:4200/home/${id}`)
+
+  coppyLink(url: string) {
+    // this.clipboard.copy(`localhost:4200/home/${id}`);
+    // this.openSnackBar('Meme link coppied')
+    this.clipboard.copy(url)
+    this.openSnackBar('Url link coppied')
+  }
+
+  coppyUrl(url: string) {
+    window.open(url);
   }
 
   searchMemeTrigger() {
     this.ngOnInit();
+  }
+
+  openSnackBar(message: string) {
+
+    this._snackBar.open(message, 'Undo', {duration: 1000});
+
   }
 
   searchMeme(tag: string) {
@@ -99,7 +116,7 @@ export class HomeComponent implements OnInit {
 
     if(this.searchService.search === true) {
       this.searchMeme(this.searchService.value).subscribe(data => {
-        this.meme = data
+        this.meme = data;
         console.log(this.meme);
       });
     } else {

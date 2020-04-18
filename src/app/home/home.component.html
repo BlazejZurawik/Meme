@@ -6,21 +6,33 @@ infiniteScroll
 [scrollWindow]="false">
 
   <mat-card class="container__child" *ngFor="let item of meme" >
-    <mat-card-title style="text-align: start;">
+    <mat-card-title class="title">
       {{item.title}}
+      <div class="title__tags">
+        <div class="title__tags--el">
+          #{{item.tags}}
+        </div>
+      </div>
     </mat-card-title>
     <img mat-card-image src={{item.url}} alt="">
     <mat-card-content>
-      <p>tutaj znajduje sie opis MEME</p>
+      <p>{{item.comment}}</p>
     </mat-card-content>
-    <!-- <mat-card-actions>
-    </mat-card-actions> -->
     <mat-card-footer class="dateOfMeme">
-      <button mat-button color="accent" title="Copy link to share" (click)="coppyLink(this.item.id)">
-        <span class="material-icons">
-        share
-        </span></button>
-      <i>Dodano: {{myDate | date}}</i>
+      <div>
+        <button mat-button color="accent" title="Open image in a new tab" (click)="coppyUrl(this.item.url)">
+          <span class="material-icons">
+            link
+          </span></button>
+
+        <button mat-button color="accent" title="Copy link to share" (click)="coppyLink(this.item.url)">
+          <span class="material-icons">
+          share
+          </span></button>
+      </div>
+      <div>
+        <i>Dodano: {{myDate | date}}</i>
+      </div>
     </mat-card-footer>
   </mat-card>
 

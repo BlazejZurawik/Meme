@@ -4,11 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchServiceService {
-
-  tag: string
-  search = false
-  value: string
+export class AdminPanelServiceService {
 
   // Observable string sources
   public componentMethodCallSource = new Subject<any>();
@@ -18,16 +14,8 @@ export class SearchServiceService {
 
   constructor() { }
 
-  // Service message commands
-  callComponentMethod() {
-
-    if(this.value === '' || this.value === undefined) {
-      this.search = false
-    } else {
-      this.search = true
+    // Service message commands
+    callComponentMethod(snackKind: string) {
+      this.componentMethodCallSource.next(snackKind);
     }
-
-    this.componentMethodCallSource.next();
-  }
-
 }
