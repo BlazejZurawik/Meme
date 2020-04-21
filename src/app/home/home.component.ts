@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable} from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { SearchServiceService } from '@app/search-service.service';
-import { MatSnackBar, MatSnackBarConfig  } from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -49,17 +49,16 @@ export class HomeComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-
     this._snackBar.open(message, 'Undo', {duration: 1000});
-
   }
 
-  searchMeme(tag: string) {
-    return this.http.get(`http://localhost:3000/memes?_page=1&_sort=id&_order=desc&tags=${tag}`);
+  searchMeme(tag: string): Observable<any> {
+    return this.http.get(`/searchMeme/${tag}?page=${this.page}`);
   }
 
   getMeme(): Observable<any> {
-    return this.http.get(`http://localhost:3000/memes?_page=1&_sort=id&_order=desc`);
+    // return this.http.get(`http://localhost:3000/memes?_page=1&_sort=id&_order=desc`);
+    return this.http.get(`/allMemesDesc`);
   }
 
   onScroll() {
@@ -76,10 +75,11 @@ export class HomeComponent implements OnInit {
    setTimeout(() => {
 
     if(this.searchService.search === true) {
-      this.http.get(`http://localhost:3000/memes?_page=${this.page}&_sort=id&_order=desc&tags=${this.searchService.value}`)
+
+      this.http.get(`/searchMeme/${this.searchService.value}?page=${this.page}`)
       .subscribe( (data: any) => {
 
-         const newPost = data;
+         const newPost = data.data;
 
          this.spinner.hide();
 
@@ -93,10 +93,10 @@ export class HomeComponent implements OnInit {
        });
     } else {
 
-      this.http.get(`http://localhost:3000/memes?_page=${this.page}&_sort=id&_order=desc`)
+      this.http.get(`/allMemesDesc?page=${this.page}`)
       .subscribe( (data: any) => {
 
-         const newPost = data;
+         const newPost = data.data;
 
          this.spinner.hide();
 
@@ -116,13 +116,11 @@ export class HomeComponent implements OnInit {
 
     if(this.searchService.search === true) {
       this.searchMeme(this.searchService.value).subscribe(data => {
-        this.meme = data;
-        console.log(this.meme);
+        this.meme = data.data
       });
     } else {
       this.getMeme().subscribe(data => {
-        this.meme = data
-        console.log(this.meme);
+        this.meme = data.data
       });
     }
   }

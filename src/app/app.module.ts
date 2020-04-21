@@ -13,7 +13,6 @@ import { SharedModule } from '@shared';
 import { AuthModule } from '@app/auth';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
-import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,7 +30,6 @@ import { AppRoutingModule } from './app-routing.module';
     ShellAdminModule,
     AdminPanelModule,
     HomeModule,
-    AboutModule,
     AuthModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
