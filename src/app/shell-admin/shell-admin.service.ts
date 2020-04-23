@@ -2,7 +2,6 @@ import { ShellAdminComponent } from './shell-admin.component';
 import { Routes, Route } from '@angular/router';
 import { AuthenticationGuard } from '@app/auth';
 
-
 export class ShellAdminService {
   /**
    * Creates routes using the shell component and authentication.

@@ -1,6 +1,6 @@
 table {
   width: 100%;
-  font-family: 'Comic Neue', cursive;
+  font-family: "Comic Neue", cursive;
   transition: 0.2s;
   height: 100%;
   overflow: scroll;
@@ -31,7 +31,6 @@ table td {
 ::ng-deep .mat-snack-bar-container {
   background-color: #ff9100d7;
 }
-
 
 @media only screen and (max-width: 600px) {
   .table {

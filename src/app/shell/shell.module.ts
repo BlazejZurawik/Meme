@@ -24,7 +24,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     I18nModule,
     InfiniteScrollModule,
     NgxSpinnerModule,
-    RouterModule],
+    RouterModule,
+  ],
   declarations: [HeaderComponent, ShellComponent],
 })
 export class ShellModule {}

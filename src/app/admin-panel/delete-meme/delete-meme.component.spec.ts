@@ -8,9 +8,8 @@ describe('DeleteMemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteMemeComponent ]
-    })
-    .compileComponents();
+      declarations: [DeleteMemeComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

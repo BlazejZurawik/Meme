@@ -1,59 +1,48 @@
-<div class="container"
-infiniteScroll
-[infiniteScrollDistance]="2"
-[infiniteScrollThrottle]="150"
-(scrolled)="onScroll()"
-[scrollWindow]="false">
-
-  <mat-card class="container__child" *ngFor="let item of meme" >
+<div
+  class="container"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="150"
+  (scrolled)="onScroll()"
+  [scrollWindow]="false"
+>
+  <mat-card class="container__child" *ngFor="let item of meme">
     <mat-card-title class="title">
-      {{item.title}}
+      {{ item.title }}
       <div class="title__tags">
-        <div class="title__tags--el">
-          #{{item.tags}}
-        </div>
+        <div class="title__tags--el">#{{ item.tags }}</div>
       </div>
     </mat-card-title>
-    <img mat-card-image src={{item.url}} alt="">
+    <img mat-card-image src="{{ item.url }}" alt="" />
     <mat-card-content>
-      <p>{{item.comment}}</p>
+      <p>{{ item.comment }}</p>
     </mat-card-content>
     <mat-card-footer class="dateOfMeme">
       <div>
         <button mat-button color="accent" title="Open image in a new tab" (click)="coppyUrl(this.item.url)">
           <span class="material-icons">
             link
-          </span></button>
+          </span>
+        </button>
 
         <button mat-button color="accent" title="Copy link to share" (click)="coppyLink(this.item.url)">
           <span class="material-icons">
-          share
-          </span></button>
+            share
+          </span>
+        </button>
       </div>
       <div>
-        <i>Dodano: {{myDate | date}}</i>
+        <i>Dodano: {{ myDate | date }}</i>
       </div>
     </mat-card-footer>
   </mat-card>
 
-  <div class="spinner" *ngIf="notEmptyPost"  >
-      <ngx-spinner
-      bdOpacity = 0.9
-      bdColor = ""
-      size = "default"
-      color = "#ff8f00"
-      type = "ball-pulse-sync"
-      [fullScreen]= "false"
-      >
-      </ngx-spinner>
+  <div class="spinner" *ngIf="notEmptyPost">
+    <ngx-spinner bdOpacity="0.9" bdColor="" size="default" color="#ff8f00" type="ball-pulse-sync" [fullScreen]="false">
+    </ngx-spinner>
   </div>
 
-  <div class="endOfPage" *ngIf="!notEmptyPost" >
+  <div class="endOfPage" *ngIf="!notEmptyPost">
     <h2>Moderator się obija :/ koniec meme</h2>
   </div>
 </div>
-
-
-
-
-

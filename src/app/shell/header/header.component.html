@@ -17,13 +17,12 @@
         <mat-icon color="accent">add</mat-icon>
         <span class="font">Dodaj</span>
       </button> -->
-
     </div>
     <!-- <span fxFlex></span>   -->
     <mat-form-field class="search-form-field font">
       <mat-label>Szukaj</mat-label>
-      <input class="search-form-field__input" matInput type="text" [(ngModel)]="value" (keyup.enter)="searchMeme()">
-      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <input class="search-form-field__input" matInput type="text" [(ngModel)]="value" (keyup.enter)="searchMeme()" />
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>

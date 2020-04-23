@@ -8,9 +8,8 @@ describe('ShellAdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShellAdminComponent ]
-    })
-    .compileComponents();
+      declarations: [ShellAdminComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

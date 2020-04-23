@@ -7,15 +7,14 @@ import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-shell-admin',
   templateUrl: './shell-admin.component.html',
-  styleUrls: ['./shell-admin.component.scss']
+  styleUrls: ['./shell-admin.component.scss'],
 })
 export class ShellAdminComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
 
-  constructor(private media: MediaObserver) { }
+  constructor(private media: MediaObserver) {}
 
   ngOnInit() {
-
     this.media
       .asObservable()
       .pipe(
@@ -30,5 +29,4 @@ export class ShellAdminComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Needed for automatic unsubscribe with untilDestroyed
   }
-
 }

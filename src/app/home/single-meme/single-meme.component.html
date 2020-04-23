@@ -1,9 +1,9 @@
 <div class="container">
   <mat-card class="container__child">
     <mat-card-title style="text-align: start;">
-      {{meme?.title}}
+      {{ meme?.title }}
     </mat-card-title>
-    <img mat-card-image src={{meme?.url}} alt="">
+    <img mat-card-image src="{{ meme?.url }}" alt="" />
     <mat-card-content>
       <p>tutaj znajduje sie opis MEME</p>
     </mat-card-content>
@@ -11,7 +11,7 @@
       <!-- buttons -->
     </mat-card-actions>
     <mat-card-footer class="dateOfMeme">
-      <i>Dodano: {{myDate | date}}</i>
+      <i>Dodano: {{ myDate | date }}</i>
     </mat-card-footer>
   </mat-card>
 </div>

@@ -25,7 +25,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MaterialModule,
     NgxSpinnerModule,
     FormsModule,
-    AdminPanelRoutingModule
-  ]
+    AdminPanelRoutingModule,
+  ],
 })
-export class AdminPanelModule { }
+export class AdminPanelModule {}

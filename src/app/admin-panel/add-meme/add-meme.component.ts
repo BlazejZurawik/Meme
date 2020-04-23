@@ -7,7 +7,7 @@ import { AdminPanelServiceService } from '../admin-panel-service.service';
 @Component({
   selector: 'app-add-meme',
   templateUrl: './add-meme.component.html',
-  styleUrls: ['./add-meme.component.scss']
+  styleUrls: ['./add-meme.component.scss'],
 })
 export class AddMemeComponent implements OnInit {
   data: string;
@@ -16,29 +16,23 @@ export class AddMemeComponent implements OnInit {
   comment: string;
   tag: string;
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     public dialogRef: MatDialogRef<AdminPanelComponent>,
-    private service: AdminPanelServiceService) { }
+    private service: AdminPanelServiceService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   onYesClick() {
-    this.http.post(`http://localhost:3000/memes`, {
-        title: this.title,
-        url: this.url,
-        comment: this.comment,
-        tags: this.tag
-    }, {headers: new HttpHeaders({'Content-Type': 'application/json'})
-    } ).subscribe();
-
     this.dialogRef.close();
 
     this.service.callComponentMethod('add');
-  }
 
+    this.service.addMeme(this.title, this.url, this.comment, this.tag).subscribe();
+  }
 }

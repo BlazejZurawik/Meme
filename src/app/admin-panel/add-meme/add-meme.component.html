@@ -2,30 +2,35 @@
   <h1>
     <mat-card-title translate>Add Meme</mat-card-title>
   </h1>
-  <form class="container__form">
+  <form class="container__form" >
     <mat-form-field color="accent" class="input">
       <mat-label>Tytuł</mat-label>
-      <input matInput [(ngModel)]="title" name="title">
+      <input matInput [(ngModel)]="title" name="title" />
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Url</mat-label>
-      <textarea class="urlArea" matInput [(ngModel)]="url" name="url"
-      cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize"
-      cdkAutosizeMinRows="1"
-      cdkAutosizeMaxRows="5"></textarea>
+      <textarea
+        class="urlArea"
+        matInput
+        [(ngModel)]="url"
+        name="url"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Komentarz</mat-label>
-      <input matInput [(ngModel)]="comment" name="comment">
+      <input matInput [(ngModel)]="comment" name="comment" />
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Tag</mat-label>
-      <input matInput [(ngModel)]="tag" name="tag">
+      <input matInput [(ngModel)]="tag" name="tag" />
     </mat-form-field>
   </form>
   <mat-card-actions class="container__actions">
-    <button mat-raised-button color="accent"(click)="onYesClick()">Dodaj</button>
+    <button mat-raised-button color="accent" (click)="onYesClick()">Dodaj</button>
     <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
   </mat-card-actions>
 </div>

@@ -25,8 +25,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   searchMeme() {
-
-    this.searchService.value = this.value
+    this.searchService.value = this.value;
     this.searchService.callComponentMethod();
   }
 
@@ -34,8 +33,7 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
@@ -43,7 +41,7 @@ export class HeaderComponent implements OnInit {
 
   get username(): string | null {
     const credentials = this.credentialsService.credentials;
-    return credentials ? credentials.username : null;
+    return credentials ? credentials.email : null;
   }
 
   get title(): string {

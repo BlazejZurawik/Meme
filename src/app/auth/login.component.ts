@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, untilDestroyed } from '@core';
 import { AuthenticationService } from './authentication.service';
 
-const log = new Logger('Login');
+// const log = new Logger('Login');
 
 @Component({
   selector: 'app-login',
@@ -46,21 +46,27 @@ export class LoginComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (credentials) => {
-          log.debug(`${credentials.username} successfully logged in`);
+          // log.debug(`${credentials.email} successfully logged in`);
+          console.log(`${credentials.email} successfully logged in`);
+
           this.router.navigate([this.route.snapshot.queryParams.redirect || '/admin-panel'], { replaceUrl: true });
         },
         (error) => {
-          log.debug(`Login error: ${error}`);
+          // log.debug(`Login error: ${error}`);
+          console.log(`Login error: ${error}`);
+
           this.error = error;
+          this.loginForm.reset();
         }
       );
   }
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      remember: true,
+      email: new FormControl('admin2594@gmail.com', { validators: [Validators.required] }),
+      password: new FormControl('Admin223', { validators: [Validators.required] }),
+      // username: ['', Validators.required],
+      // password: ['', Validators.required],
     });
   }
 }

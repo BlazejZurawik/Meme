@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {Clipboard} from '@angular/cdk/clipboard';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { SearchServiceService } from '@app/search-service.service';
-import { MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,6 @@ import { MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   myDate = new Date();
   meme: any;
   tags: any;
@@ -25,19 +24,18 @@ export class HomeComponent implements OnInit {
     public spinner: NgxSpinnerService,
     private clipboard: Clipboard,
     private searchService: SearchServiceService,
-    private _snackBar: MatSnackBar) {
-
-      this.searchService.componentMethodCalled$.subscribe( () => {
-        this.searchMemeTrigger();
-      })
-    }
-
+    private _snackBar: MatSnackBar
+  ) {
+    this.searchService.componentMethodCalled$.subscribe(() => {
+      this.searchMemeTrigger();
+    });
+  }
 
   coppyLink(url: string) {
     // this.clipboard.copy(`localhost:4200/home/${id}`);
     // this.openSnackBar('Meme link coppied')
-    this.clipboard.copy(url)
-    this.openSnackBar('Url link coppied')
+    this.clipboard.copy(url);
+    this.openSnackBar('Url link coppied');
   }
 
   coppyUrl(url: string) {
@@ -49,78 +47,70 @@ export class HomeComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, 'Undo', {duration: 1000});
+    this._snackBar.open(message, 'Undo', { duration: 1000 });
   }
 
   searchMeme(tag: string): Observable<any> {
-    return this.http.get(`/searchMeme/${tag}?page=${this.page}`);
+    return this.http.get(`api/searchMeme/${tag}?page=${this.page}`);
   }
 
   getMeme(): Observable<any> {
     // return this.http.get(`http://localhost:3000/memes?_page=1&_sort=id&_order=desc`);
-    return this.http.get(`/allMemesDesc`);
+    return this.http.get(`api/allMemesDesc`);
   }
 
   onScroll() {
     if (this.notScrolly && this.notEmptyPost) {
-      this.spinner.show()
-      this.notScrolly = false
+      this.spinner.show();
+      this.notScrolly = false;
       this.loadNextPost();
     }
   }
 
   loadNextPost() {
-   this.page++
+    this.page++;
 
-   setTimeout(() => {
+    setTimeout(() => {
+      if (this.searchService.search === true) {
+        this.http.get(`api/searchMeme/${this.searchService.value}?page=${this.page}`).subscribe((data: any) => {
+          const newPost = data.data;
 
-    if(this.searchService.search === true) {
+          this.spinner.hide();
 
-      this.http.get(`/searchMeme/${this.searchService.value}?page=${this.page}`)
-      .subscribe( (data: any) => {
+          if (newPost.length === 0) {
+            this.notEmptyPost = false;
+          }
+          // add newly fetched posts to the existing post
+          this.meme = this.meme.concat(newPost);
 
-         const newPost = data.data;
+          this.notScrolly = true;
+        });
+      } else {
+        this.http.get(`api/allMemesDesc?page=${this.page}`).subscribe((data: any) => {
+          const newPost = data.data;
 
-         this.spinner.hide();
+          this.spinner.hide();
 
-         if (newPost.length === 0 ) {
-           this.notEmptyPost =  false;
-         }
-         // add newly fetched posts to the existing post
-         this.meme = this.meme.concat(newPost);
+          if (newPost.length === 0) {
+            this.notEmptyPost = false;
+          }
+          // add newly fetched posts to the existing post
+          this.meme = this.meme.concat(newPost);
 
-         this.notScrolly = true;
-       });
-    } else {
-
-      this.http.get(`/allMemesDesc?page=${this.page}`)
-      .subscribe( (data: any) => {
-
-         const newPost = data.data;
-
-         this.spinner.hide();
-
-         if (newPost.length === 0 ) {
-           this.notEmptyPost =  false;
-         }
-         // add newly fetched posts to the existing post
-         this.meme = this.meme.concat(newPost);
-
-         this.notScrolly = true;
-       });
-    }
-   }, 1500);
+          this.notScrolly = true;
+        });
+      }
+    }, 1500);
   }
 
   ngOnInit() {
-
-    if(this.searchService.search === true) {
-      this.searchMeme(this.searchService.value).subscribe(data => {
-        this.meme = data.data
+    if (this.searchService.search === true) {
+      this.searchMeme(this.searchService.value).subscribe((data) => {
+        this.meme = data.data;
       });
     } else {
-      this.getMeme().subscribe(data => {
-        this.meme = data.data
+      this.getMeme().subscribe((data) => {
+        this.meme = data.data;
       });
     }
   }

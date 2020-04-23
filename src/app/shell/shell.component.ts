@@ -17,7 +17,6 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   onScroll() {
     console.log('dziala');
-
   }
 
   ngOnInit() {

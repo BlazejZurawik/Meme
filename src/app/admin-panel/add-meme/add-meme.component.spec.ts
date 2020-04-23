@@ -8,9 +8,8 @@ describe('AddMemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMemeComponent ]
-    })
-    .compileComponents();
+      declarations: [AddMemeComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

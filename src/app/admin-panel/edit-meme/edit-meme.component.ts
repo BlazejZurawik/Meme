@@ -15,14 +15,15 @@ export interface DialogData {
 @Component({
   selector: 'app-edit-meme',
   templateUrl: './edit-meme.component.html',
-  styleUrls: ['./edit-meme.component.scss']
+  styleUrls: ['./edit-meme.component.scss'],
 })
 export class EditMemeComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<AdminPanelComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<AdminPanelComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private http: HttpClient,
-    private service: AdminPanelServiceService) { }
+    private service: AdminPanelServiceService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,18 +32,11 @@ export class EditMemeComponent implements OnInit {
   }
 
   onYesClick() {
-    this.http.put(`http://localhost:3000/memes/${this.data.id}`, {
-        title: this.data.title,
-        url: this.data.url,
-        comment: this.data.comment,
-        tags: this.data.tag
-    }, {headers: new HttpHeaders({'Content-Type': 'application/json'})
-    } ).subscribe();
 
     this.dialogRef.close();
 
     this.service.callComponentMethod('edit');
+
+    this.service.editMeme(this.data.id, this.data.title, this.data.url, this.data.comment, this.data.tag).subscribe();
   }
-
 }
-

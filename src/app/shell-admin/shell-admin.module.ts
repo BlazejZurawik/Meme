@@ -13,7 +13,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [ShellAdminComponent, HeaderComponent],
   imports: [
@@ -27,6 +26,6 @@ import { RouterModule } from '@angular/router';
     // InfiniteScrollModule,
     // NgxSpinnerModule,
     RouterModule,
-  ]
+  ],
 })
-export class ShellAdminModule { }
+export class ShellAdminModule {}

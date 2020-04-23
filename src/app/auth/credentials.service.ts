@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface Credentials {
   // Customize received credentials here
-  username: string;
+  email: string;
   token: string;
 }
 
@@ -48,15 +48,25 @@ export class CredentialsService {
    * @param credentials The user credentials.
    * @param remember True to remember credentials across sessions.
    */
-  setCredentials(credentials?: Credentials, remember?: boolean) {
+  setCredentials(credentials?: Credentials) {
     this._credentials = credentials || null;
 
     if (credentials) {
-      const storage = remember ? localStorage : sessionStorage;
+      const storage = localStorage;
       storage.setItem(credentialsKey, JSON.stringify(credentials));
     } else {
-      sessionStorage.removeItem(credentialsKey);
       localStorage.removeItem(credentialsKey);
     }
   }
+  // setCredentials(credentials?: Credentials, remember?: boolean) {
+  //   this._credentials = credentials || null;
+
+  //   if (credentials) {
+  //     const storage = remember ? localStorage : sessionStorage;
+  //     storage.setItem(credentialsKey, JSON.stringify(credentials));
+  //   } else {
+  //     sessionStorage.removeItem(credentialsKey);
+  //     localStorage.removeItem(credentialsKey);
+  //   }
+  // }
 }
