@@ -2,35 +2,49 @@
   <h1>
     <mat-card-title translate>Edytuj Meme</mat-card-title>
   </h1>
-  <form class="container__form">
+  <form class="container__form" [formGroup]="editForm">
     <mat-form-field color="accent" class="input">
       <mat-label>Tytuł</mat-label>
-      <input matInput [(ngModel)]="data.title" name="title" />
+      <input formControlName="title" matInput required />
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Url</mat-label>
       <textarea
+        formControlName="url"
         class="urlArea"
         matInput
-        [(ngModel)]="data.url"
-        name="url"
         cdkTextareaAutosize
         #autosize="cdkTextareaAutosize"
-        cdkAutosizeMinRows="1"
+        cdkAutosizeMinRows="2"
         cdkAutosizeMaxRows="5"
+        required
       ></textarea>
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Komentarz</mat-label>
-      <input matInput [(ngModel)]="data.comment" name="comment" />
+      <input formControlName="comments" matInput />
     </mat-form-field>
     <mat-form-field color="accent" class="input">
       <mat-label>Tag</mat-label>
-      <input matInput [(ngModel)]="data.tag" name="tag" />
+      <input formControlName="tags" matInput required/>
     </mat-form-field>
   </form>
   <mat-card-actions class="container__actions">
-    <button mat-raised-button color="accent" (click)="onYesClick()">Edytuj</button>
+    <button mat-raised-button color="accent" (click)="onYesClick()" [disabled]="editForm.invalid">Edytuj</button>
     <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
   </mat-card-actions>
 </div>
+
+<!-- <mat-form-field [hideRequiredMarker]="true" color="accent" class="font">
+  <input
+    type="password"
+    matInput
+    formControlName="password"
+    autocomplete="current-password"
+    [placeholder]="'Password' | translate"
+    required
+  />
+  <mat-error *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+    <span translate>Password is required</span>
+  </mat-error>
+</mat-form-field> -->

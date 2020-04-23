@@ -24,30 +24,14 @@ export class AdminPanelServiceService {
     return this.http.get(`/api/admin/allMemes`)
   }
 
-  editMeme(id:number, dataTitle: string, dataUrl: string, dataComment: string, dataTag: string): Observable<any> {
+  editMeme(id:number, data:object): Observable<any> {
 
-    return this.http.post(`/api/admin/editMeme/${id}`,
-        {
-          title: dataTitle,
-          url: dataUrl,
-          comments: dataComment,
-          tags: dataTag
-        })
+    return this.http.put(`/api/admin/editMeme/${id}`, data)
   }
 
-  addMeme(dataTitle: string, dataUrl: string, dataComment: string, dataTag: string): Observable<any> {
+  addMeme(data: object): Observable<any> {
 
-    return this.http.post(`/api/admin/addMeme`,
-     {
-      title: dataTitle,
-      url: dataUrl,
-      comments: dataComment,
-      tags: dataTag
-    },
-    {   headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      })
-    })
+    return this.http.post(`/api/admin/addMeme`, data)
   }
 
 

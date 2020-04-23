@@ -9,7 +9,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@app/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteMemeComponent } from './delete-meme/delete-meme.component';
 import { AddMemeComponent } from './add-meme/add-meme.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -18,6 +18,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   declarations: [AdminPanelComponent, EditMemeComponent, DeleteMemeComponent, AddMemeComponent],
   imports: [
     MatFormFieldModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,

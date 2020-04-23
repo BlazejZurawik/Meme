@@ -47,7 +47,7 @@ export class AdminPanelComponent implements OnInit {
 
       setTimeout(() => {
         this.refreshTable();
-      }, 500);
+      }, 250);
     });
   }
 
@@ -76,7 +76,7 @@ export class AdminPanelComponent implements OnInit {
         id: this.memeInfo[id].id,
         title: this.memeInfo[id].title,
         url: this.memeInfo[id].url,
-        comment: this.memeInfo[id].comment,
+        comments: this.memeInfo[id].comments,
         tag: this.memeInfo[id].tags,
       },
     });

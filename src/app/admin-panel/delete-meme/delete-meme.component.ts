@@ -31,10 +31,9 @@ export class DeleteMemeComponent implements OnInit {
   onYesClick() {
     // this.http.delete(`http://localhost:3000/memes/${this.data.id}`).subscribe();
 
+    this.service.deleteMeme(this.data.id).subscribe();
     this.dialogRef.close();
-
     this.service.callComponentMethod('delete');
 
-    this.service.deleteMeme(this.data.id).subscribe();
   }
 }
